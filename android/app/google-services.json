@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "987466856067",
+    "project_id": "lifecycle-84ed3",
+    "storage_bucket": "lifecycle-84ed3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987466856067:android:20ca582c62bc2d5a074db6",
+        "android_client_info": {
+          "package_name": "com.example.life_circle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "987466856067-m2j3u4v86qjj01on7qkfmod3jd72nqcd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJk31FTfS-F3urs00KicPHG71q-BHOv9k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "987466856067-m2j3u4v86qjj01on7qkfmod3jd72nqcd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
