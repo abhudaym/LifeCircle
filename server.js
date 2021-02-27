@@ -2,7 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import User from "./models/userModel.js";
-import Circle from "./models/circleModel.js";
+import userRoutes from "./routes/userRoutes.js";
+
 import asyncHandler from "express-async-handler";
 
 dotenv.config();
@@ -13,46 +14,50 @@ const app = express();
 
 app.use(express.json());
 
+app.use("/api/user", userRoutes);
+
 app.get("/", (req, res) => {
   res.send("API is running!");
 });
 
-app.get(
-  "/api/user",
-  asyncHandler(async (req, res) => {
-    const user = await User.find({});
-    res.json(user);
-  })
-);
+// app.use("/api/user", userRoutes);
 
-app.post(
-  "/api/user",
-  asyncHandler(async (req, res) => {
-    const { name, email, password, email2 } = req.body;
+// app.get(
+//   "/api/user",
+//   asyncHandler(async (req, res) => {
+//     const user = await User.find({});
+//     res.json(user);
+//   })
+// );
 
-    const user2 = await User.findOne({ email: email2 });
+// app.post(
+//   "/api/user",
+//   asyncHandler(async (req, res) => {
+//     const { name, email, password, email2 } = req.body;
 
-    const user = await User.create({
-      name,
-      email,
-      password,
-      circle: [
-        {
-          _id: user2._id,
-          name: user2.name,
-          email: user2.email,
-        },
-      ],
-    });
+//     const user2 = await User.findOne({ email: email2 });
 
-    res.json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      circle: user.circle,
-    });
-  })
-);
+//     const user = await User.create({
+//       name,
+//       email,
+//       password,
+//       circle: [
+//         {
+//           _id: user2._id,
+//           name: user2.name,
+//           email: user2.email,
+//         },
+//       ],
+//     });
+
+//     res.json({
+//       _id: user._id,
+//       name: user.name,
+//       email: user.email,
+//       circle: user.circle,
+//     });
+//   })
+// );
 
 // app.post(
 //   "/api/circle",
@@ -73,15 +78,4 @@ app.listen(
   console.log(`Server running on ${PORT} in ${process.env.NODE_ENV}`)
 );
 
-// const user = await User.create({
-//   name,
-//   email,
-//   password,
-// });
-
-// res.json({
-//   _id: user._id,
-//   name: user.name,
-//   email: user.email,
-//   circle: user.circle,
-// });
+// Build a route for adding people in a circle

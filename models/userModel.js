@@ -18,8 +18,18 @@ const userSchema = mongoose.Schema(
 
     circle: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        required: false,
+        id: {
+          type: mongoose.Schema.Types.ObjectId,
+          required: false,
+        },
+        name: {
+          type: mongoose.Schema.Types.String,
+          required: false,
+        },
+        email: {
+          type: mongoose.Schema.Types.String,
+          required: false,
+        },
       },
     ],
     // medicalDocs: {
