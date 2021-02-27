@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import generateToken from "../utils/generateToken.js";
 import User from "../models/userModel.js";
+import Hospital from "../models/hospitalModel.js";
 import axios from "axios";
 
 const getUsers = asyncHandler(async (req, res) => {
@@ -13,8 +14,6 @@ const authUser = asyncHandler(async (req, res) => {
 
   const user = await User.findOne({ email });
 
-  const check = await user.matchPassword(password);
-  console.log(check);
   if (user && (await user.matchPassword(password))) {
     res.json({
       _id: user._id,
@@ -73,6 +72,7 @@ const registerUser = asyncHandler(async (req, res) => {
         lat,
         lon,
       },
+      emergency: user.emergency,
     });
   } else if (!user2) {
     const user = await User.create({
@@ -115,4 +115,46 @@ const updateCircle = asyncHandler(async (req, res) => {
   });
 });
 
-export { getUsers, registerUser, updateCircle, authUser };
+const SOS = asyncHandler(async (req, res) => {
+  console.log(req.user.emergency);
+  let user;
+  if (req.user.emergency === "false") {
+    user = await User.findByIdAndUpdate(req.user._id, {
+      emergency: "true",
+    });
+  } else if (req.user.emergency === "true") {
+    user = await User.findByIdAndUpdate(req.user._id, {
+      emergency: "false",
+    });
+  }
+
+  res.json({
+    name: user.name,
+    circle: user.circle,
+    emergency: user.emergency,
+  });
+});
+
+const handleSOS = asyncHandler(async (req, res) => {
+  const mainUser = req.user;
+  const circle = req.user.circle;
+  if (mainUser.emergency === "true") {
+    circle.map(async (friend) => {
+      const user = await User.findOne({ email: friend.email });
+      user.SOS.push(mainUser);
+      user.save();
+      res.json({
+        SOS: user.SOS,
+      });
+    });
+
+    const hospital = await Hospital.find({});
+    hospital.map((h) => {
+      h.SOS.push(mainUser._id);
+      h.save();
+      console.log("added!");
+    });
+  }
+});
+
+export { getUsers, registerUser, updateCircle, authUser, SOS, handleSOS };

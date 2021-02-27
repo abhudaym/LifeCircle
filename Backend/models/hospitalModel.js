@@ -39,6 +39,15 @@ const hospitalSchema = mongoose.Schema(
         },
       },
     ],
+    SOS: [
+      {
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          required: false,
+          ref: "User",
+        },
+      },
+    ],
   },
   {
     timestamps: true,
@@ -52,10 +61,10 @@ hospitalSchema.methods.matchPassword = async function (enteredPassword) {
 hospitalSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
+  } else {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
   }
-
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
 });
 
 const Hospital = mongoose.model("Hospital", hospitalSchema);

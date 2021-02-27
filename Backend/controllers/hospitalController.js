@@ -2,21 +2,19 @@
 import asyncHandler from "express-async-handler";
 import generateToken from "../utils/generateToken.js";
 import Hospital from "../models/hospitalModel.js";
-import axios from "axios";
 import User from "../models/userModel.js";
-
+import axios from "axios";
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
-  const user = await User.findOne({ email });
-
-  if (user && (await user.matchPassword(password))) {
+  const hospital = await Hospital.findOne({ email });
+  if (hospital && (await hospital.matchPassword(password))) {
     res.json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      isAdmin: user.isAdmin,
-      token: generateToken(user._id),
+      _id: hospital._id,
+      name: hospital.name,
+      email: hospital.email,
+      isAdmin: hospital.isAdmin,
+      token: generateToken(hospital._id),
     });
   } else {
     res.status(401);
@@ -77,4 +75,15 @@ const addAmbulance = asyncHandler(async (req, res) => {
   res.json(hospital);
 });
 
-export { registerHospital, getHospitals, addAmbulance };
+// const getUserFromId = asyncHandler(async (req, res) => {
+//   let name = [];
+//   req.hospital.SOS.map(async (i) => {
+//     const user = await User.findById(i._id);
+//     console.log(i._id);
+//     console.log(user._id);
+//     console.log(user.name);
+//   });
+//   console.log(name);
+// });
+
+export { authUser, registerHospital, getHospitals, addAmbulance };
