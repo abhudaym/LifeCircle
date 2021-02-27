@@ -1,15 +1,41 @@
 import asyncHandler from "express-async-handler";
 import generateToken from "../utils/generateToken.js";
 import User from "../models/userModel.js";
+import axios from "axios";
 
 const getUsers = asyncHandler(async (req, res) => {
   const user = await User.find({});
   res.json(user);
 });
+
+const authUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+
+  const check = await user.matchPassword(password);
+  console.log(check);
+  if (user && (await user.matchPassword(password))) {
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id),
+    });
+  } else {
+    res.status(401);
+    throw new Error("Invalid Email or password");
+  }
+});
 // Update circle
 // Add user
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, email2 } = req.body;
+
+  const data = await axios.get(`http://ip-api.com/json`);
+  const lat = data.data.lat;
+  const lon = data.data.lon;
+  console.log(data.data);
 
   const user2 = await User.findOne({ email: email2 });
 
@@ -31,6 +57,10 @@ const registerUser = asyncHandler(async (req, res) => {
           email: user2.email,
         },
       ],
+      location: {
+        lat,
+        lon,
+      },
     });
 
     res.status(201).json({
@@ -39,24 +69,35 @@ const registerUser = asyncHandler(async (req, res) => {
       email: user.email,
       circle: user.circle,
       token: generateToken(user._id),
+      location: {
+        lat,
+        lon,
+      },
     });
   } else if (!user2) {
     const user = await User.create({
       name,
       email,
       password,
+      location: {
+        lat,
+        lon,
+      },
     });
     res.status(201).json({
       _id: user._id,
       name: user.name,
       email: user.email,
       token: generateToken(user._id),
+      location: {
+        lat,
+        lon,
+      },
     });
   }
 });
 
 const updateCircle = asyncHandler(async (req, res) => {
-  // const objCircle = {email: req.body.email}
   // to update circle, we need to find the user whose circle
   // needs to be updated and then use spread operator to
   // populate the existing array and add the new user.
@@ -75,7 +116,11 @@ const updateCircle = asyncHandler(async (req, res) => {
     name: user.name,
     email: user.email,
     circle: user.circle,
+    location: {
+      lat,
+      lon,
+    },
   });
 });
 
-export { getUsers, registerUser, updateCircle };
+export { getUsers, registerUser, updateCircle, authUser };

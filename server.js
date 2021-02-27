@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import User from "./models/userModel.js";
 import userRoutes from "./routes/userRoutes.js";
+import hospitalRoutes from "./routes/hospitalRoutes.js";
 
 import asyncHandler from "express-async-handler";
 
@@ -15,6 +16,7 @@ const app = express();
 app.use(express.json());
 
 app.use("/api/user", userRoutes);
+app.use("/api/hospital", hospitalRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running!");
