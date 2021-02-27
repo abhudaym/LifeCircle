@@ -2,26 +2,26 @@ import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema(
   {
-    userDetails: {
-      name: {
-        type: String,
-        required: true,
-        unique: true,
-      },
-      email: {
-        type: String,
-        required: true,
-      },
-      password: {
-        type: String,
-        required: true,
-      },
+    name: {
+      type: String,
+      required: true,
+      unique: true,
     },
-    circleInfo: {
-      user: [
-        { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
-      ],
+    email: {
+      type: String,
+      required: true,
     },
+    password: {
+      type: String,
+      required: true,
+    },
+
+    circle: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        required: false,
+      },
+    ],
     // medicalDocs: {
     //     id:
     // }
@@ -30,3 +30,6 @@ const userSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+const User = mongoose.model("User", userSchema);
+export default User;
