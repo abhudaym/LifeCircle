@@ -5,11 +5,11 @@ import {
   updateCircle,
   authUser,
 } from "../controllers/userController.js";
-import { protect } from "../middleware/authMiddleware.js";
+import { protectUser } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 router.route("/").get(getUsers).post(registerUser);
-router.route("/circle").post(protect, updateCircle);
+router.route("/circle").post(protectUser, updateCircle);
 router.post("/login", authUser);
 
 export default router;

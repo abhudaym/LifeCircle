@@ -11,7 +11,7 @@ const hospitalSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    contactNo: {
+    contactno: {
       type: Number,
       required: true,
     },
@@ -25,18 +25,16 @@ const hospitalSchema = mongoose.Schema(
     },
     ambulance: [
       {
-        availabilty: {
-          type: Boolean,
+        availability: {
+          type: mongoose.Schema.Types.String,
           required: false,
         },
         location: {
           lat: {
             type: String,
-            required: false,
           },
           lon: {
             type: String,
-            required: false,
           },
         },
       },

@@ -98,15 +98,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 const updateCircle = asyncHandler(async (req, res) => {
-  // to update circle, we need to find the user whose circle
-  // needs to be updated and then use spread operator to
-  // populate the existing array and add the new user.
   const user2 = await User.findOne({ email: req.body.email });
-
-  // await User.findOneAndUpdate({
-  //   _id: req.user._id,
-  //   {$push: {circle: objCircle}}
-  // });
 
   const user = await User.findById(req.user._id);
   user.circle.push(user2);
