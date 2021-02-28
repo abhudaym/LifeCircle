@@ -1,12 +1,22 @@
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
+import userRoutes from "./routes/userRoutes.js";
+import hospitalRoutes from "./routes/hospitalRoutes.js";
+import cors from "cors";
+
+import asyncHandler from "express-async-handler";
 
 dotenv.config();
 
 connectDB();
 
 const app = express();
+app.use(cors({ origin: true, credentials: true }));
+app.use(express.json());
+
+app.use("/api/user", userRoutes);
+app.use("/api/hospital", hospitalRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running!");
