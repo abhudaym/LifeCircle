@@ -1,2 +1,8 @@
 # LifeCircle
 Project for Hackverse '21
+LifeCircle is a One Stop Family Medical solution for all your medical needs.It can help you with getting to know the well being of your loved ones by tracking their location in case of an emergency.
+
+## The problem LifeCircle solves
+LifeCircle is a One Stop Family Medical solution for all your medical needs. It can help you with getting to know the well being of your loved ones(we are calling them circles) by tracking their location in case of an emergency, extensive emergency support, medical reports and prescriptions all on your mobile phones. Along with this, we have a chatbot implemented to talk to user and also recommend home remedies in case of any discomfort.
+Whenever a user will claim that he /she is in an emergency, nearby hospitals along with his circle will be notified of the user's location. Further, the hospital will send an ambulance towards the emergency location and the ambulance's location will be shared in real-time with the circle as well. Any time the user gets prescription or reports from the doctor on this app, he/she can choose whether to share it with the circle or not. A chat-bot has been implemented to take care of minor difficulties like cold, headache.
+There will be two portals - one for users and one for hospitals. User portal will function as mentioned above. Hospital portal will receive information including name and location of the user in distress and who needs emergency medical attention. With this, they can send an ambulance towards the location of the user. The ambulance's location will be shared to the user and the circle of the user. Along with this, this application will also help keep count of available ambulances.
