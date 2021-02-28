@@ -75,15 +75,14 @@ const addAmbulance = asyncHandler(async (req, res) => {
   res.json(hospital);
 });
 
-// const getUserFromId = asyncHandler(async (req, res) => {
-//   let name = [];
-//   req.hospital.SOS.map(async (i) => {
-//     const user = await User.findById(i._id);
-//     console.log(i._id);
-//     console.log(user._id);
-//     console.log(user.name);
-//   });
-//   console.log(name);
-// });
-
-export { authUser, registerHospital, getHospitals, addAmbulance };
+const getHospitalInfo = asyncHandler(async (req, res) => {
+  const hospital = await Hospital.findById(req.hospital._id);
+  res.json(hospital);
+});
+export {
+  authUser,
+  registerHospital,
+  getHospitals,
+  addAmbulance,
+  getHospitalInfo,
+};

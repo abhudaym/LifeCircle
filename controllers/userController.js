@@ -157,4 +157,17 @@ const handleSOS = asyncHandler(async (req, res) => {
   }
 });
 
-export { getUsers, registerUser, updateCircle, authUser, SOS, handleSOS };
+const getUserInfo = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+  res.json(user);
+});
+
+export {
+  getUsers,
+  registerUser,
+  updateCircle,
+  authUser,
+  SOS,
+  handleSOS,
+  getUserInfo,
+};
