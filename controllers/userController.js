@@ -104,6 +104,11 @@ const updateCircle = asyncHandler(async (req, res) => {
   user.circle.push(user2);
   user.save();
 
+  const data = await axios.get(`http://ip-api.com/json`);
+  console.log(data);
+  const lat = data.data.lat;
+  const lon = data.data.lon;
+
   res.json({
     name: user.name,
     email: user.email,
