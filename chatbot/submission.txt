@@ -1,0 +1,12 @@
+﻿Project choosen: Conversational chatbot
+
+Conclusion: ChatBot is a powerful tool to be built, the current version of the chatbot uses a dense neural network to classify between intents to respond appropriately. the responses are good but the application is very limited as its performance is dependent on the vocabulary for big sentences. This can be improved by using LSTM to understand the structure of the sentence to predict the answer.
+
+Why i built it: I took a course on NLP and wanted to understand its working and how it can be helpful, i realised that a chatbot can be modelled according to application, to act as a powerful assistant through any task.
+
+methods: Tokenising, stemming, sequential, dense, dropout, sgd, categorical crossentropy, relu, softmax.
+
+dataset: Intents.json(included in the file)
+
+screenshots:
+

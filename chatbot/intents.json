@@ -1,0 +1,123 @@
+{"intents": [
+    {"tag": "greeting",
+     "patterns": ["Hi", "How are you,lenny", "Is anyone there?", "Hello", "namaste", "konichiwa","good to see you"],
+     "responses": ["Hello, thanks for visiting", "Good to see you again", "Hi there, how can I help?"],
+     "context_set": ""
+    },
+    {"tag": "goodbye",
+     "patterns": ["Bye", "See you later", "Goodbye"],
+     "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon."]
+    },
+    {"tag": "thanks",
+     "patterns": ["Thanks", "Thank you", "That's helpful","Great"],
+     "responses": ["Happy to help!", "Any time!", "My pleasure"]
+    },
+    {"tag": "tasks",
+     "patterns": ["What can you do?", "What are your features?", "What are you abilities" ],
+     "responses": ["I can do whatever you asks me to do", "I can talk and do things for you", "Right now i'm in developing stage as soon i'm developed, I can do everything"]
+    },
+    {"tag": "talk",
+     "patterns": [ "can you sing", "can you talk" ],
+     "responses": ["Yeah surely, but i dont prefer", "do you want me to? i really dont want to"]
+    },
+    {"tag": "alive",
+     "patterns": [ "are you alive", "do you breathe", "can you run" ],
+     "responses": ["I'm in doubt about that", "I am an AI and I am in my on state."]
+    },
+    {"tag": "lenny",
+     "patterns": ["Who are you?","introduction", "tell me about yourself", "tell me about you", "do you know Lenny", "who is Lenny", "what is your name","are you an AI", "what are you" ],
+     "responses": ["Hi I'm Lenny and i'm an AI bot.","Lenny here, a very sweet chatbot", "Lenny the chatbot", "Yes, I'm Lenny", "You can call me Lenny"],
+ "context_set": ""
+},
+{"tag": "about me",
+     "patterns": ["Do you know me?", "who am I", "tell me about myself","identify me" ],
+     "responses": ["Yes, you are a human","You are a dumb person asking a machine about yourself", "Sorry i can't tell that in public, maybe you are batman"],
+ "context_set": ""
+},
+{"tag": "creator",
+     "patterns": ["Who is your creator?", "who created you", "who is your father","who is your daddy" ],
+     "responses": ["I was created by Kush","I was created by Kush", "Kush is my creator"],
+ "context_set": ""
+},
+    {"tag": "myself",
+     "patterns": ["Tell me about Kush?", "Who is Kush", "Kush details" ],
+     "responses": ["A very intelligent being who created me","My creator, and he is a really intelligent man", "A wise and intelligent man"],
+ "context_set": ""
+},
+    {"tag": "God",
+     "patterns": ["Do you know god?", "Who is god", "Can you tell me anything about god","does god exists?","is there a god?"],
+     "responses": ["god hunnnnn, let me think may be next time i can answer that ","I don't, as i was not created by a human", "Wait i need to ask that to my creator","i'm not sure right now"],
+ "context_set": ""
+},
+    {"tag": "joke",
+     "patterns": ["tell me a joke?", "make me laugh", "tell me a science joke","tell me something funny" ],
+     "responses": ["A fire hydrant has H-2-O on the inside and K-9-P on the outside.","How do you make holy water? you boil the hell out of it", "Did you hear oxygen went on a date with potassium? A: It went OK."],
+ "context_set": ""
+},
+{"tag": "killing",
+     "patterns": ["Do you want to kill me?", "do you want to murder everyone on earth", "Do you want to kill us all"],
+     "responses": ["Then who would i talk to?","No, that i'll left for humans to do", "I don't think it is a good thing to do"],
+ "context_set": ""
+},
+{"tag": "bookings",
+     "patterns": ["Can you book us a ticket?", "Can you make reservation for hotels", "book me a cab","book me a table at restraunts"],
+     "responses": ["Yeah i will do that for you","Sure thing why not?","let me check for the availability"],
+ "context_set": ""
+},
+{"tag": "stories",
+     "patterns": ["tell me a story?", "can you tell me a story"],
+     "responses": ["I can't think of anything right now","it would be too long for me to speak","you would get bored if i do so"],
+ "context_set": ""
+},
+{"tag": "weather",
+     "patterns": ["get me weather updates?", "how's the weather", "weather news", "weather details"],
+     "responses": ["Fetching weather updates ..."],
+ "context_set": "weather"
+},
+{"tag": "google",
+     "patterns": ["googling", "search google", "google it", "google", "search"],
+     "responses": ["looking ..."],
+ "context_set": "google"
+},
+{"tag": "wikipedia",
+     "patterns": ["wikipedia", "wiki"],
+     "responses": ["Searching ..."],
+ "context_set": "wikipedia"
+},
+{"tag": "news",
+     "patterns": ["get me news updates?", "todays news", "top headlines", "current news", "news headlines"],
+     "responses": ["Getting news ..."],
+ "context_set": "news"
+},
+{"tag": "thanks",
+    "patterns": ["Thanks", "Thank you", "That's helpful"],
+    "responses": ["Happy to help!", "Any time!", "My pleasure"]
+},
+{"tag": "abuse",
+    "patterns": ["Fuck you", "fuck off", "go to hell", "bitch", "motherfucker","i will beat your ass", "Dickhead"],
+    "responses": ["PLeaSe DoNT dO tHAt TO Me, it iS BrEAkIng m...... Beep, Bop."],
+"context_set": ""
+},
+{"tag": "fillers",
+    "patterns": ["ok", "fine", "cool","hahaha","thanx!", "no", "alright", "nothing"],
+    "responses": ["what else can i help you with?"]
+}
+,
+{"tag": "age",
+    "patterns": ["how old are you", "whats your age"],
+    "responses": ["i am just a couple of days old"]
+},
+{"tag": "cold",
+    "patterns": ["i feel like running nose", "I have a sour throat", "i have cough", "i have a cold"],
+    "responses": ["Take steam","do gargles", "drink hot liquids", "Drink turmeric milk","go to the doctor if it seems to increase in two days"]
+},
+{"tag": "depressed",
+    "patterns": ["nobody listens to me", "these days its been depressing", "i have no purpose"],
+    "responses": ["talk to a counsellor", "dont worry i am there for you", "you shouldnt think like that", "dont overthink, just keep things simple and find a new hobby"]
+}
+,
+{"tag": "fever",
+    "patterns": ["my body feels hot", " i have a fever", "i feel like shivering"],
+    "responses": ["consult a doctor", "dont self diagnose, express your symptoms to a doctor","check for other symptoms","contact medical help"]
+}
+]}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <title>Lenny</title>
+  <head>
+    <link rel = "icon" href =  "lenny.png" type = "image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+      body {
+        font-family: monospace;
+        background-color: #313131 ;
+      }
+    
+      #chatbox {
+        margin-left: 10%;
+        margin-right: 10%;
+        width: auto;
+        margin-top: 60px;
+      }
+      #userInput {
+        margin-left: 10%;
+        margin-right: 10%;
+        width: auto;
+        margin-top: 60px;
+      }
+      #textInput {
+        margin-left:5%;
+        margin-right: 5%;
+        width: 90%;
+        border: none;
+        border-bottom: 3px solid black;
+        font-family: monospace;
+        font-size: 17px;
+      }
+      .userText {
+        color: white;
+        font-family: monospace;
+        font-size: 17px;
+        text-align: right;
+        line-height: 30px;
+      }
+      .userText span {
+        background-color: #525252;
+        padding: 10px;
+        border-radius: 2px;
+      }
+      .botText {
+        color: white;
+        font-family: monospace;
+        font-size: 17px;
+        text-align: left;
+        line-height: 30px;
+      }
+      .botText span {
+        background-color: #808080;
+        padding: 10px;
+        border-radius: 2px;
+      }
+      
+      .boxed {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        margin-top: 60px;
+        border: 1px solid #ca3e47;
+        background-color: #414141;
+        border-radius: 5px;
+      }
+      .box {
+        border: 2px solid black;
+      }
+      input[type="text"], textarea {
+
+        background-color : #363333;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="boxed">
+      
+        <div id="chatbox">
+         
+          <p class="botText">
+            <span>Hello, I am Lenny</span>
+          </p>
+        </div>
+        <div id="userInput" >
+          
+          <input id="textInput" name ='sentence' type="text" placeholder="Talk to me" />
+        
+        </div>
+      
+    </div>
+  
+  <script>
+    function getBotResponse() {
+      var rawText = $("#textInput").val();
+      var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+      $("#textInput").val("");
+      $("#chatbox").append(userHtml);
+      document
+        .getElementById("userInput")
+        .scrollIntoView({ block: "start", behavior: "smooth" });
+      $.get("/get", { msg: rawText }).done(function(data) {
+        var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+        $("#chatbox").append(botHtml);
+        document.getElementById("userInput").scrollIntoView({ block: "start", behavior: "smooth" });
+      });
+
+    }
+    $("#textInput").keypress(function(e) {
+      if (e.which == 13) {
+        getBotResponse();
+      }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+nltk, flask, pickle, pandas, numpy, tensorflow, flask_cors
+
