@@ -21,7 +21,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/api/user/login",
+      "https://lit-harbor-00048.herokuapp.com/api/hospital/login",
       { email, password },
       config
     );
