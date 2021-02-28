@@ -12,9 +12,15 @@ const LoginScreen = ({ location, history }) => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+  const redirect = "/";
 
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
+  useEffect(() => {
+    if (userInfo) {
+      history.push("/");
+    }
+  }, [userInfo]);
 
   const submitHandler = (e) => {
     e.preventDefault();

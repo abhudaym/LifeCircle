@@ -10,8 +10,10 @@ import { register } from "../actions/userActions";
 const RegisterScreen = ({ location, history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [contactno, setContactno] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [availability, setAvailability] = useState("");
   const [message, setMessage] = useState(null);
 
   const dispatch = useDispatch();
@@ -28,11 +30,7 @@ const RegisterScreen = ({ location, history }) => {
   }, [history, userInfo, redirect]);
   const submitHandler = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setMessage("Passwords do not match!");
-    } else {
-      dispatch(register(name, email, password));
-    }
+    dispatch(register(name, email, password, address, contactno, availability));
   };
   return (
     <FormContainer>
@@ -63,6 +61,39 @@ const RegisterScreen = ({ location, history }) => {
             }}
           ></Form.Control>
         </Form.Group>
+        <Form.Group controlId="address">
+          <Form.Label>Address</Form.Label>
+          <Form.Control
+            type="address"
+            placeholder="Enter Address"
+            value={address}
+            onChange={(e) => {
+              setAddress(e.target.value);
+            }}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group controlId="contactno">
+          <Form.Label>Contact Number</Form.Label>
+          <Form.Control
+            type="contactno"
+            placeholder="Enter Contact Number"
+            value={contactno}
+            onChange={(e) => {
+              setContactno(e.target.value);
+            }}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group controlId="availability">
+          <Form.Label>Ambulance availability</Form.Label>
+          <Form.Control
+            type="availability"
+            placeholder="Enter availability"
+            value={availability}
+            onChange={(e) => {
+              setAvailability(e.target.value);
+            }}
+          ></Form.Control>
+        </Form.Group>
         <Form.Group controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -71,17 +102,6 @@ const RegisterScreen = ({ location, history }) => {
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
-            }}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId="confirmPassword">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Confirm password"
-            value={confirmPassword}
-            onChange={(e) => {
-              setConfirmPassword(e.target.value);
             }}
           ></Form.Control>
         </Form.Group>

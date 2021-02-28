@@ -43,7 +43,14 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-export const register = (name, email, password) => async (dispatch) => {
+export const register = (
+  name,
+  email,
+  password,
+  availability,
+  contactno,
+  address
+) => async (dispatch) => {
   try {
     dispatch({
       type: USER_REGISTER_REQUEST,
@@ -56,8 +63,8 @@ export const register = (name, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "api/users",
-      { name, email, password },
+      "https://lit-harbor-00048.herokuapp.com/api/hospital",
+      { name, address, email, password, contactno, availability },
       config
     );
 
